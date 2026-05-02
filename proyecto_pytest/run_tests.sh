@@ -1,8 +1,8 @@
 #!/bin/bash
-echo "entrando al proyecto"
-cd proyecto_pytest
 echo "activando el entorno virtual"
-source venv/bin/activate
+cd venv
+cd bin
+source activate
 
 echo "instalando dependencias"
 pip install -r requirements.txt
