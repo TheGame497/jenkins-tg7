@@ -5,6 +5,7 @@ cd bin
 source activate
 
 echo "instalando dependencias"
+pip install --upgrade pip
 pip install -r requirements.txt
 
 echo "ejecutando pruebas con pytest"
