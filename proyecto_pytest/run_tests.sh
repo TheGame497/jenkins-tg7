@@ -1,8 +1,6 @@
 #!/bin/bash
 echo "activando el entorno virtual"
-cd venv
-cd bin
-source activate
+source venv/bin/activate
 
 echo "instalando dependencias"
 pip install --upgrade pip
