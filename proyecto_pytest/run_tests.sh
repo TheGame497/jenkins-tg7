@@ -3,7 +3,8 @@ echo "activando el entorno virtual"
 if [ ! -d venv ]; then
     python3 -m venv venv
 fi
-source venv/bin/activate
+cd venv/bin/
+source activate
 
 echo "instalando dependencias"
 pip install --upgrade pip
