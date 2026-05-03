@@ -9,7 +9,7 @@ if [ ! "venv/bin/activate" ]; then
 elif [ -f "venv/Scripts/activate" ]
   source venv/bin/activate
 else
-    echo"Error no se activo el env"
+    echo "Error no se activo el env"
     exit 1
 fi
 
