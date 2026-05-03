@@ -16,10 +16,6 @@ else
   exit 1
 fi
 
-echo "verificando entorno"
-which python
-which pip
-
 echo "instalando dependencias"
 pip install --upgrade pip
 pip install -r requirements.txt
