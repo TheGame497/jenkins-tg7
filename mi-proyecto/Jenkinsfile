@@ -17,6 +17,9 @@ steps{
     echo "SImulando deploy"
 }
         }
+
+
+        
     post {
         always{
         echo "Siempre se ejecutara"
@@ -28,4 +31,5 @@ echo "Siempre se ejecutara si esta correcto"
 echo "Siempre se ejecutara si el pipeline falla"
         }
     }
+}
 }
