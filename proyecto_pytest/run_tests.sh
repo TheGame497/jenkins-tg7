@@ -4,9 +4,9 @@ if [ ! "-d venv" ]; then
   python3 -m venv venv
 fi
 
-if [ ! "venv/bin/activate" ]; then
+if [ -f "venv/bin/activate" ]; then
   source venv/bin/activate
-elif [ -f "venv/Scripts/activate" ]
+elif [ -f "venv/Scripts/activate" ] then
   source venv/bin/activate
 else
     echo "Error no se activo el env"
