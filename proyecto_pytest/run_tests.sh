@@ -1,26 +1,22 @@
 #!/bin/bash
-set -e
+echo "activando el entorno virtual"
+if [ ! "-d venv" ]; then
+  python3 -m venv venv
+fi
 
-echo "Eliminando entorno virtual viejo"
-rm -rf venv
+if [ -f "venv/bin/activate" ]; then
+  source venv/bin/activate
+elif [ -f "venv/Scripts/activate" ]; then
+  source venv/bin/activate
+else
+    echo "Error no se activo el env"
+    exit 1
+fi
 
-echo "Creando entorno virtual limpio"
-python3 -m venv venv
+echo "instalando dependencias"
+pip install --upgrade pip --break-system-packages
+pip install -r requirements.txt --break-system-packages
 
-echo "Verificando python del venv"
-venv/bin/python --version
-
-echo "Instalando dependencias"
-venv/bin/python -m pip install --upgrade pip
-venv/bin/python -m pip install -r requirements.txt
-venv/bin/python -m pip install pytest pytest-html
-
-echo "Ejecutando pruebas"
-mkdir -p reports
-
-venv/bin/python -m pytest tests/ \
-  --junitxml=reports/test-results.xml \
-  --html=reports/test-results.html \
-  --self-contained-html
-
-echo "Pruebas finalizadas"
+echo "ejecutando pruebas con pytest"
+pytest tests/ --junitxml=reports/test-results.xml --html=reports/test-results.html --self-contained-html
+echo "pruebas finalizadas resultados en reports"
