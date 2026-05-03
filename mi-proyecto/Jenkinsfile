@@ -28,5 +28,4 @@ echo "Siempre se ejecutara si esta correcto"
 echo "Siempre se ejecutara si el pipeline falla"
         }
     }
-    }
 }
