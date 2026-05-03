@@ -1,20 +1,24 @@
 #!/bin/bash
 set -e
 
-echo "Creando entorno virtual si no existe"
-if [ ! -d venv ]; then
-  python3 -m venv venv
-fi
+echo "Eliminando entorno virtual viejo"
+rm -rf venv
 
-echo "Usando pip del entorno virtual"
-venv/bin/pip install --upgrade pip
-venv/bin/pip install -r requirements.txt
-venv/bin/pip install pytest pytest-html
+echo "Creando entorno virtual limpio"
+python3 -m venv venv
+
+echo "Verificando python del venv"
+venv/bin/python --version
+
+echo "Instalando dependencias"
+venv/bin/python -m pip install --upgrade pip
+venv/bin/python -m pip install -r requirements.txt
+venv/bin/python -m pip install pytest pytest-html
 
 echo "Ejecutando pruebas"
 mkdir -p reports
 
-venv/bin/pytest tests/ \
+venv/bin/python -m pytest tests/ \
   --junitxml=reports/test-results.xml \
   --html=reports/test-results.html \
   --self-contained-html
